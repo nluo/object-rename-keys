@@ -1,0 +1,11 @@
+{
+  "name": "object-rename-keys",
+  "version": "1.0.0",
+  "description": "Rename the selected object keys",
+  "main": "index.js",
+  "scripts": {
+    "test": "node tests"
+  },
+  "author": "Nick Luo (https://github.com/nluo)",
+  "license": "MIT"
+}
