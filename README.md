@@ -1,5 +1,5 @@
 # What
-Rename the selected keys inside the object(and nested object) to the given values
+Rename the selected key(s) inside the object(and nested object) to the given values
 
 # Get start
 Require it:
