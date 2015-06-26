@@ -60,8 +60,47 @@ test('test with nested object', function(t){
 
     var expectedResult = {
         thing: {
+            suburb: 'thing',
+            street: 'some street',
+            postcode: '2000'
+        }
+    };
+
+    t.deepEqual(mockAddress, expectedOriginalObject, 'original object has not been changed');
+    t.deepEqual(result, expectedResult, 'second test result is as expected');
+});
+
+test.only('test with nested object', function(t){
+    t.plan(2);
+    var mockAddress = {
+        thing: {
+            suburb: 'thing',
+            street: 'some street',
+            postcode: '2000'
+        }
+    };
+
+    var expectedOriginalObject = {
+        thing: {
+            suburb: 'thing',
+            street: 'some street',
+            postcode: '2000'
+        }
+    };
+
+    var changes = {
+        thing: {
+            suburb: 'Suburb'
+        },
+        street: 'myStreet'
+    };
+
+    var result = renameKeys(mockAddress, changes);
+
+    var expectedResult = {
+        thing: {
             Suburb: 'thing',
-            myStreet: 'some street',
+            street: 'some street',
             postcode: '2000'
         }
     };
