@@ -5,6 +5,10 @@ function renameKeys(object, changes){
 		return object;
 	}
 
+	if (Array.isArray(object)){
+		return object;
+	}
+
 	var copy = clone(object);
 
 	for (var key in changes) {
@@ -12,13 +16,13 @@ function renameKeys(object, changes){
 			if (copy.hasOwnProperty(key)) {
 				// traverse again
 				copy[key] = renameKeys(copy[key], changes[key]);
-
-				console.log(key, 'and result is ', copy[key]);
+				continue;
 			}
 		}
 
 		if (copy.hasOwnProperty(key)) {
 			var temp = copy[key];
+
 			copy[changes[key]] = temp;
 			delete copy[key];
 		}
