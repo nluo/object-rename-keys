@@ -6,6 +6,16 @@
   "scripts": {
     "test": "node tests"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nluo/object-rename-keys.git"
+  },
   "author": "Nick Luo (https://github.com/nluo)",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "tape": "^4.0.0"
+  },
+  "dependencies": {
+    "clone": "^1.0.2"
+  }
 }

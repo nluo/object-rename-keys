@@ -1,22 +1,24 @@
+var clone = require('clone');
+
 function renameKeys(object, changes){
 	if (!changes || typeof changes !== 'object') {
 		return object;
 	}
 
-	for (var key in object) {
+	var copy = clone(object);
+
+	for (var key in copy) {
 		if (changes.hasOwnProperty(key)) {
-			var temp = object[key];
-			object[changes[key]] = temp;
-			delete object[key];
+			var temp = copy[key];
+			copy[changes[key]] = temp;
+			delete copy[key];
 		}
 
-		if (typeof object[key] === 'object') {
-			renameKeys(object[key], changes);
+		if (typeof copy[key] === 'object') {
+			copy[key] = renameKeys(copy[key], changes);
 		}
 	}
-
-	return object
-
+	return copy;
 }
 
 module.exports = renameKeys;
