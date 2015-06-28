@@ -1,22 +1,36 @@
-# What
-Rename the selected key(s) inside the object(and nested object) to the given values
+[![Build Status](https://travis-ci.org/nluo/object-rename-keys.svg?branch=master)](https://travis-ci.org/nluo/object-rename-keys)
 
-# Get start
-Require it:
+# What
+Returns a copy of the object with keys changed to values defined by an object
+
+# Quick Reference
+
+## API
+
+Require and use it:
 ```
 var objectRenameKeys = require('object-rename-keys');
+
+objectRenameKeys(object, changesMap);
 ```
+
+*`object`: the original object
+*`changesMap`: the changesMap is the object you defined what keys you would like to change, and the values changed to.
+
+```
+changesMap = {
+  originalKey: newValue,
+  ...
+}
+```
+
 and an example object: 
 
 ```
 var address = 
 { 	
-	display: 'yes',
-	streetNumber: '39',
 	street: 'Hollywood Street',
 	suburb: 'Calamvale',
-	state: 'QLD',
-	postcode: '4109',
 	country: 'AUS' 
 };
 ```
@@ -24,21 +38,9 @@ Let's say in your database the names of some fields are different, e.g. addressS
 
 ```
 var changes = {
-	streetNumber: 'addressStreetNumber',
-	street: 'addressStreet',
-	suburb: 'Suburb',
-	state: 'State',
-	country: 'Country',
-	majiggor: 'hahaha'
-}
-```
-Where as you can see, you define old key value and new key value as key:value in an object (if the key inside the change object does not exist, it will just skip)
-
-```
- {
-   oldKeyValue: newKeyValue,
-   ....
-  }
+	street: 'myStreet',
+	suburb: 'Suburb'
+};
 ```
 Apply it:
 
@@ -50,53 +52,45 @@ console.log(result);
 will have result output:
 ```
 {
-  Country: "AUS",
-  State: "QLD",
-  Suburb: "Calamvale",
-  addressStreet: "Hollywood Street",
-  addressStreetNumber: "39",
-  display: "yes",
-  postcode: "4109"
+  country: "AUS", 
+  myStreet: "Hollywood Street", 
+  Suburb: "Calamvale"
 }
 ```
 
-It will go through object recurisively, so the if the keys are in the nested object, they will get picked up and changed names too.
+It will also go through the object recurisively if you specific the keys in the changesMap in a nested way
 
 ```
-var property = {};
-property.address = address;
-console.log(property);
-```
-
-```
-{
-  adress : { 	
-  	display: 'yes',
-  	streetNumber: '39',
-  	street: 'Hollywood Street',
-  	suburb: 'Calamvale',
-  	state: 'QLD',
-  	postcode: '4109',
-  	country: 'AUS' 
-  }
+var majigger = {
+    address:
+	{ 	
+        	street: 'Hollywood Street',
+		suburb: 'Calamvale',
+		country: 'AUS' 
+	}
 }
+		
+```
 
-var result = objectRenameKeys(address, changes);
+```
+var changes = {
+  address: {
+  	street: 'myStreet'
+  },
+  suburb: 'Suburb'
+};
+
+var result = objectRenameKeys(majigger, changes);
 console.log(result);
 ```
 will output:
 
 ```
-{
-  address: 
-    {
-      Country: "AUS",
-      State: "QLD",
-      Suburb: "Calamvale",
-      addressStreet: "Hollywood Street",
-      addressStreetNumber: "39",
-      display: "yes",
-      postcode: "4109"
-    }
+{ 
+ address: 
+   { suburb: 'Calamvale',
+     country: 'AUS',
+     myStreet: 'Hollywood Street' 
+   } 
 }
 ```
