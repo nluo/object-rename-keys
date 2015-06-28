@@ -14,24 +14,24 @@ var objectRenameKeys = require('object-rename-keys');
 objectRenameKeys(object, changesMap);
 ```
 
-*`object`: the original object
-*`changesMap`: the changesMap is the object you defined what keys you would like to change, and the values changed to.
+* `object`: the original object
+* `changesMap`: the changesMap is the object you defined what keys you would like to change, and the values changed to.
 
 ```
 changesMap = {
-  originalKey: newValue,
-  ...
+    originalKey: newValue,
+    ...
 }
 ```
 
-and an example object: 
+and an example object:
 
 ```
-var address = 
-{ 	
+var address =
+{
 	street: 'Hollywood Street',
 	suburb: 'Calamvale',
-	country: 'AUS' 
+	country: 'AUS'
 };
 ```
 Let's say in your database the names of some fields are different, e.g. addressStreet instead of street, Suburb instead of suburb etc. So you want to change the keys of the object to:
@@ -52,9 +52,9 @@ console.log(result);
 will have result output:
 ```
 {
-  country: "AUS", 
-  myStreet: "Hollywood Street", 
-  Suburb: "Calamvale"
+    country: "AUS",
+    myStreet: "Hollywood Street",
+    Suburb: "Calamvale"
 }
 ```
 
@@ -63,22 +63,22 @@ It will also go through the object recurisively if you specific the keys in the 
 ```
 var majigger = {
     address:
-	{ 	
-        	street: 'Hollywood Street',
-		suburb: 'Calamvale',
-		country: 'AUS' 
-	}
+    {
+        street: 'Hollywood Street',
+        suburb: 'Calamvale',
+        country: 'AUS'
+    }
 }
-		
+
 ```
 
 ```
 var changes = {
-  address: {
-  	street: 'myStreet'
-  },
-  suburb: 'Suburb'
-};
+    address: {
+        street: 'myStreet'
+    },
+    suburb: 'Suburb'
+}
 
 var result = objectRenameKeys(majigger, changes);
 console.log(result);
@@ -86,11 +86,12 @@ console.log(result);
 will output:
 
 ```
-{ 
- address: 
-   { suburb: 'Calamvale',
-     country: 'AUS',
-     myStreet: 'Hollywood Street' 
-   } 
+{
+    address:
+    {
+        suburb: 'Calamvale',
+        country: 'AUS',
+        myStreet: 'Hollywood Street'
+    }
 }
 ```
