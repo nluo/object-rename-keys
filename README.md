@@ -1,9 +1,15 @@
 [![Build Status](https://travis-ci.org/nluo/object-rename-keys.svg?branch=master)](https://travis-ci.org/nluo/object-rename-keys)
 
 # What
-Returns a copy of the object with keys changed to values defined by an object
+Returns a copy of the object with keys changed to values defined by a changeMap object
 
 # Quick Reference
+## Install
+
+```
+npm i --save object-rename-keys
+
+```
 
 ## API
 
