@@ -1,8 +1,7 @@
 var objectRenameKeys = require('./');
 
-var majigger = {
-	address:
-	{
+var object = {
+	address: {
 		street: 'Hollywood Street',
 		suburb: 'Calamvale',
 		country: 'AUS'
@@ -16,4 +15,14 @@ var changes = {
 	suburb: 'Suburb'
 };
 
-console.log(objectRenameKeys(majigger, changes));
+console.log(objectRenameKeys(object, changes));
+
+// Arrays of objects
+var objects = [
+  object,
+  {
+    suburb: 'Mosman'
+  }
+]
+
+console.log('Array of objects, results is ', objectRenameKeys(objects, changes))
