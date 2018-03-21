@@ -1,19 +1,20 @@
 var clone = require('clone')
 
-function renameKeys (object, changes) {
+function renameKeys(object, changes) {
   if (!changes || typeof changes !== 'object') {
     return object
   }
 
   if (Array.isArray(object)) {
     const newArray = []
-    for (const obj of object) {
-      newArray.push(renameKeys(obj, changes))
+    for (var i = 0; i< object.length; i++) {
+      newArray.push(renameKeys(object[i], changes))
     }
     return newArray
   } else {
+    console.log('type of object is ', typeof object)
     if (typeof object !== 'object') {
-      return object
+      // return object
     }
     var copy = clone(object)
 
