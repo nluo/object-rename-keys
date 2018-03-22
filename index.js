@@ -12,9 +12,8 @@ function renameKeys(object, changes) {
     }
     return newArray
   } else {
-    console.log('type of object is ', typeof object)
     if (typeof object !== 'object') {
-      // return object
+      return object
     }
     var copy = clone(object)
 
