@@ -1,6 +1,6 @@
 {
   "name": "object-rename-keys",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Rename the selected object key(s)",
   "main": "index.js",
   "scripts": {
